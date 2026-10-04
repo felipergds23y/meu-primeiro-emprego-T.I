@@ -1,6 +1,7 @@
-<!DOC
-TYPE html>
+```html
+<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,14 +20,23 @@ TYPE html>
             font-size: 36px;
         }
 
+        h2 {
+            font-size: 28px;
+        }
+
         p {
             font-size: 18px;
         }
 
         button {
             padding: 12px 25px;
+            margin: 8px;
             font-size: 16px;
             cursor: pointer;
+        }
+
+        #jornada {
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -43,22 +53,36 @@ TYPE html>
         Começar minha jornada
     </button>
 
+    <div id="jornada" style="display: none;">
+
+        <h2>🚀 Sua jornada em TI</h2>
+
+        <p>
+            Escolha o primeiro passo:
+        </p>
+
+        <button>💻 Conhecer TI</button>
+
+        <button>📚 Fazer cursos</button>
+
+        <button>🧑‍💻 Aprender programação</button>
+
+        <button>🛠️ Criar projetos</button>
+
+        <button>📄 Preparar currículo</button>
+
+        <button>🎯 Procurar emprego</button>
+
+    </div>
+
     <script>
         function comecar() {
-    document.getElementById("jornada").style.display = "block";
-}
-<div id="jornada" style="display: none;">
-
-    <h2>🚀 Sua jornada em TI</h2>
-
-    <p>Escolha o primeiro passo:</p>
-
-    <button>💻 Conhecer TI</button>
-    <button>📚 Fazer cursos</button>
-    <button>🧑‍💻 Aprender programação</button>
-    <button>🛠️ Criar projetos</button>
-    <button>📄 Preparar currículo</button>
-    <button>🎯 Procurar emprego</button>
+            document.getElementById("jornada").style.display = "block";
+        }
     </script>
+
 </body>
+
 </html>
+```
+
