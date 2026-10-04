@@ -87,8 +87,8 @@
         .quiz {
             text-align: center;
             margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #ddd;
+            padding: 25px;
+            border: 2px solid #ddd;
             border-radius: 10px;
         }
 
@@ -138,9 +138,11 @@
 
         </div>
 
+
         <p>
             Escolha uma etapa:
         </p>
+
 
         <button id="botao1" onclick="conhecerTI()">
             💻 Conhecer TI
@@ -253,19 +255,6 @@
 
             }
 
-
-            if (etapasConcluidas === 6) {
-
-                document.getElementById("conteudo").innerHTML +=
-
-                    "<h2>🎉 Parabéns!</h2>" +
-
-                    "<p>" +
-                    "Você concluiu todas as etapas da sua jornada inicial em TI!" +
-                    "</p>";
-
-            }
-
         }
 
 
@@ -280,29 +269,7 @@
                 "<p>" +
                 "TI significa Tecnologia da Informação. " +
                 "É a área responsável por utilizar computadores, " +
-                "programas, sistemas e redes para criar soluções " +
-                "e resolver problemas." +
-                "</p>" +
-
-                "<h3>🌐 Algumas áreas da TI</h3>" +
-
-                "<p>" +
-                "• Programação e desenvolvimento de sistemas<br>" +
-                "• Desenvolvimento de sites<br>" +
-                "• Desenvolvimento de aplicativos<br>" +
-                "• Redes de computadores<br>" +
-                "• Banco de dados<br>" +
-                "• Segurança da informação<br>" +
-                "• Suporte técnico" +
-                "</p>" +
-
-                "<h3>👨‍💻 Profissões de TI</h3>" +
-
-                "<p>" +
-                "Programador, desenvolvedor de software, " +
-                "analista de sistemas, técnico de suporte, " +
-                "analista de redes e profissional de segurança " +
-                "da informação." +
+                "programas, sistemas e redes para criar soluções." +
                 "</p>";
 
             concluirEtapa(0);
@@ -340,27 +307,27 @@
                 "<h3>🌐 HTML</h3>" +
 
                 "<p>" +
-                "HTML é usado para criar a estrutura de uma página." +
+                "HTML cria a estrutura da página." +
                 "</p>" +
 
                 "<h3>🎨 CSS</h3>" +
 
                 "<p>" +
-                "CSS é usado para deixar a página bonita e organizada." +
+                "CSS controla a aparência da página." +
                 "</p>" +
 
                 "<h3>⚙️ JavaScript</h3>" +
 
                 "<p>" +
-                "JavaScript permite criar ações e interações na página." +
+                "JavaScript cria ações e interações na página." +
                 "</p>" +
 
                 "<div class='quiz'>" +
 
-                "<h3>🧠 Mini quiz</h3>" +
+                "<h3>🧠 QUIZ</h3>" +
 
                 "<p>" +
-                "Qual linguagem usamos para criar interações em uma página?" +
+                "<strong>Qual linguagem usamos para criar interações em uma página?</strong>" +
                 "</p>" +
 
                 "<button class='resposta' onclick='responderQuiz(false)'>" +
@@ -388,17 +355,17 @@
                 document.getElementById("resultado");
 
 
-            if (correto) {
+            if (correto === true) {
 
                 resultado.innerHTML =
-                    "🎉 Muito bem! JavaScript cria interações na página.";
+                    "🎉 PARABÉNS! Você acertou! JavaScript cria interações na página.";
 
                 concluirEtapa(2);
 
             } else {
 
                 resultado.innerHTML =
-                    "❌ Ainda não. Tente novamente!";
+                    "❌ Resposta incorreta. Tente novamente!";
 
             }
 
@@ -444,9 +411,8 @@
                 "<h2>🎯 Procurar emprego</h2>" +
 
                 "<p>" +
-                "Depois de aprender os fundamentos e criar alguns " +
-                "projetos, você poderá começar a procurar oportunidades " +
-                "na área de Tecnologia da Informação." +
+                "Depois de aprender e criar projetos, você poderá " +
+                "começar a procurar oportunidades em TI." +
                 "</p>";
 
             concluirEtapa(5);
