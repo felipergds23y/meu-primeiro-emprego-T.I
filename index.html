@@ -35,8 +35,13 @@
             cursor: pointer;
         }
 
-        jornada {
+        #jornada {
             margin-top: 30px;
+        }
+
+        #conteudo {
+            margin-top: 30px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -61,24 +66,77 @@
             Escolha o primeiro passo:
         </p>
 
-        <button>💻 Conhecer TI</button>
+        <button onclick="conhecerTI()">
+            💻 Conhecer TI
+        </button>
 
-        <button>📚 Fazer cursos</button>
+        <button onclick="fazerCursos()">
+            📚 Fazer cursos
+        </button>
 
-        <button>🧑‍💻 Aprender programação</button>
+        <button onclick="aprenderProgramacao()">
+            🧑‍💻 Aprender programação
+        </button>
 
-        <button>🛠️ Criar projetos</button>
+        <button onclick="criarProjetos()">
+            🛠️ Criar projetos
+        </button>
 
-        <button>📄 Preparar currículo</button>
+        <button onclick="prepararCurriculo()">
+            📄 Preparar currículo
+        </button>
 
-        <button>🎯 Procurar emprego</button>
+        <button onclick="procurarEmprego()">
+            🎯 Procurar emprego
+        </button>
 
     </div>
 
+    <div id="conteudo"></div>
+
     <script>
+
         function comecar() {
             document.getElementById("jornada").style.display = "block";
         }
+
+        function conhecerTI() {
+            document.getElementById("conteudo").innerHTML =
+                "<h2>💻 Conhecendo a TI</h2>" +
+                "<p>TI significa Tecnologia da Informação.</p>" +
+                "<p>É uma área que envolve computadores, sistemas, aplicativos, sites, redes e tecnologia.</p>";
+        }
+
+        function fazerCursos() {
+            document.getElementById("conteudo").innerHTML =
+                "<h2>📚 Fazer cursos</h2>" +
+                "<p>Comece pelos fundamentos de informática e depois avance para programação e desenvolvimento.</p>";
+        }
+
+        function aprenderProgramacao() {
+            document.getElementById("conteudo").innerHTML =
+                "<h2>🧑‍💻 Aprender programação</h2>" +
+                "<p>Você vai aprender a criar programas e aplicativos usando linguagens de programação.</p>";
+        }
+
+        function criarProjetos() {
+            document.getElementById("conteudo").innerHTML =
+                "<h2>🛠️ Criar projetos</h2>" +
+                "<p>Projetos práticos ajudam você a desenvolver experiência e montar um portfólio.</p>";
+        }
+
+        function prepararCurriculo() {
+            document.getElementById("conteudo").innerHTML =
+                "<h2>📄 Preparar currículo</h2>" +
+                "<p>Seu currículo deve mostrar seus cursos, conhecimentos, projetos e habilidades.</p>";
+        }
+
+        function procurarEmprego() {
+            document.getElementById("conteudo").innerHTML =
+                "<h2>🎯 Procurar seu primeiro emprego</h2>" +
+                "<p>Agora você poderá começar a procurar oportunidades de estágio, aprendiz e primeiro emprego em TI.</p>";
+        }
+
     </script>
 
 </body>
