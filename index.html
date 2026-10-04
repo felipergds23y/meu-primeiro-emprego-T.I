@@ -2,46 +2,38 @@
 <html lang="pt-br">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Meu Primeiro Emprego em TI</title>
 
     <style>
-
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 0;
             padding: 40px;
+            background-color: #f4f4f4;
         }
 
         h1 {
-            font-size: 36px;
-        }
-
-        h2 {
-            font-size: 28px;
-        }
-
-        h3 {
-            margin-top: 25px;
+            color: #222;
         }
 
         p {
             font-size: 18px;
-            line-height: 1.6;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 12px 20px;
             margin: 8px;
             font-size: 16px;
-            cursor: pointer;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
         }
 
         #jornada {
@@ -49,133 +41,128 @@
         }
 
         #progresso {
-            margin: 25px auto;
             max-width: 500px;
+            margin: 25px auto;
         }
 
         #barra-fundo {
             width: 100%;
             height: 25px;
             background-color: #ddd;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
         }
 
         #barra {
             width: 0%;
             height: 100%;
-            background-color: #4caf50;
+            background-color: #28a745;
             transition: width 0.5s;
         }
 
         #conteudo {
             max-width: 700px;
             margin: 30px auto;
-            padding: 20px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 12px;
             text-align: left;
         }
 
-        #conteudo h2 {
-            text-align: center;
-        }
-
         .concluido {
-            background-color: #4caf50;
+            background-color: #28a745;
             color: white;
         }
 
         .quiz {
-            text-align: center;
-            margin-top: 30px;
-            padding: 25px;
-            border: 2px solid #ddd;
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f0f0f0;
             border-radius: 10px;
         }
 
         .resposta {
             display: block;
+            width: 90%;
             margin: 10px auto;
-            width: 80%;
         }
 
         #resultado {
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
+        .reiniciar {
+            background-color: #dc3545;
+            color: white;
+        }
     </style>
-
 </head>
 
 <body>
 
-    <h1>Meu Primeiro Emprego em TI</h1>
+    <h1>💻 Meu Primeiro Emprego em TI</h1>
 
     <p>
         Seu caminho para começar uma carreira em Tecnologia da Informação.
     </p>
 
     <button onclick="comecar()">
-        Começar minha jornada
+        🚀 Começar minha jornada
     </button>
 
+    <button class="reiniciar" onclick="reiniciarProgresso()">
+        🔄 Reiniciar minha jornada
+    </button>
+
+    <div id="progresso">
+
+        <h2 id="textoProgresso">
+            0 de 6 etapas concluídas
+        </h2>
+
+        <div id="barra-fundo">
+            <div id="barra"></div>
+        </div>
+
+    </div>
 
     <div id="jornada" style="display: none;">
 
-        <h2>🚀 Sua jornada em TI</h2>
+        <h2>Minha Jornada em TI</h2>
 
-        <div id="progresso">
-
-            <p id="textoProgresso">
-                0 de 6 etapas concluídas
-            </p>
-
-            <div id="barra-fundo">
-
-                <div id="barra"></div>
-
-            </div>
-
-        </div>
-
-
-        <p>
-            Escolha uma etapa:
-        </p>
-
-
-        <button id="botao1" onclick="conhecerTI()">
+        <button id="etapa0" onclick="conhecerTI()">
             💻 Conhecer TI
         </button>
 
-        <button id="botao2" onclick="fazerCursos()">
+        <button id="etapa1" onclick="fazerCursos()">
             📚 Fazer cursos
         </button>
 
-        <button id="botao3" onclick="aprenderProgramacao()">
+        <button id="etapa2" onclick="aprenderProgramacao()">
             🧑‍💻 Aprender programação
         </button>
 
-        <button id="botao4" onclick="criarProjetos()">
+        <button id="etapa3" onclick="criarProjetos()">
             🛠️ Criar projetos
         </button>
 
-        <button id="botao5" onclick="prepararCurriculo()">
+        <button id="etapa4" onclick="prepararCurriculo()">
             📄 Preparar currículo
         </button>
 
-        <button id="botao6" onclick="procurarEmprego()">
+        <button id="etapa5" onclick="procurarEmprego()">
             🎯 Procurar emprego
         </button>
 
     </div>
-
 
     <div id="conteudo"></div>
 
 
     <script>
 
+        // Carrega o progresso salvo no navegador
         let etapas = JSON.parse(
             localStorage.getItem("etapasTI")
         ) || [
@@ -188,23 +175,25 @@
         ];
 
 
+        // Conta quantas etapas já foram concluídas
         let etapasConcluidas = etapas.filter(
             etapa => etapa === true
         ).length;
 
 
+        // Começa a jornada
         function comecar() {
 
             document.getElementById("jornada").style.display = "block";
 
             atualizarProgresso();
-
         }
 
 
+        // Atualiza o texto e a barra de progresso
         function atualizarProgresso() {
 
-            document.getElementById("textoProgresso").innerHTML =
+            document.getElementById("textoProgresso").innerText =
                 etapasConcluidas + " de 6 etapas concluídas";
 
 
@@ -216,31 +205,29 @@
                 porcentagem + "%";
 
 
+            // Marca visualmente as etapas concluídas
             for (let i = 0; i < 6; i++) {
 
-                if (etapas[i] === true) {
+                let botao =
+                    document.getElementById("etapa" + i);
 
-                    let botao =
-                        document.getElementById("botao" + (i + 1));
+                if (etapas[i]) {
 
                     botao.classList.add("concluido");
 
-                    if (!botao.innerHTML.includes("Concluído")) {
+                } else {
 
-                        botao.innerHTML += " ✓ Concluído";
-
-                    }
+                    botao.classList.remove("concluido");
 
                 }
-
             }
-
         }
 
 
+        // Conclui uma etapa
         function concluirEtapa(numero) {
 
-            if (etapas[numero] === false) {
+            if (!etapas[numero]) {
 
                 etapas[numero] = true;
 
@@ -252,110 +239,138 @@
                 );
 
                 atualizarProgresso();
-
             }
-
         }
 
 
+        // ETAPA 1
         function conhecerTI() {
 
-            document.getElementById("conteudo").innerHTML =
+            document.getElementById("conteudo").innerHTML = `
 
-                "<h2>💻 Conhecendo a Tecnologia da Informação</h2>" +
+                <h2>💻 Conhecendo a Tecnologia da Informação</h2>
 
-                "<h3>O que é TI?</h3>" +
+                <p>
+                    TI significa Tecnologia da Informação.
+                </p>
 
-                "<p>" +
-                "TI significa Tecnologia da Informação. " +
-                "É a área responsável por utilizar computadores, " +
-                "programas, sistemas e redes para criar soluções." +
-                "</p>";
+                <p>
+                    É a área responsável por trabalhar com
+                    computadores, sistemas, programas, redes,
+                    dados e tecnologia.
+                </p>
+
+                <h3>Algumas áreas de TI:</h3>
+
+                <ul>
+                    <li>Programação</li>
+                    <li>Desenvolvimento de sistemas</li>
+                    <li>Suporte técnico</li>
+                    <li>Redes</li>
+                    <li>Banco de dados</li>
+                    <li>Segurança da informação</li>
+                </ul>
+
+                <p>
+                    Você está começando sua jornada agora!
+                </p>
+            `;
 
             concluirEtapa(0);
-
         }
 
 
+        // ETAPA 2
         function fazerCursos() {
 
-            document.getElementById("conteudo").innerHTML =
+            document.getElementById("conteudo").innerHTML = `
 
-                "<h2>📚 Fazer cursos</h2>" +
+                <h2>📚 Fazer cursos</h2>
 
-                "<p>" +
-                "Comece pelos fundamentos de informática e depois " +
-                "avance para programação e desenvolvimento." +
-                "</p>";
+                <p>
+                    Para começar em TI, é importante construir
+                    uma base de conhecimentos.
+                </p>
+
+                <h3>Uma boa sequência:</h3>
+
+                <ol>
+                    <li>Conhecimentos básicos de computador</li>
+                    <li>Windows e ferramentas digitais</li>
+                    <li>Lógica de programação</li>
+                    <li>HTML e CSS</li>
+                    <li>JavaScript</li>
+                    <li>Projetos práticos</li>
+                </ol>
+
+                <p>
+                    Você não precisa aprender tudo de uma vez.
+                    O importante é avançar passo a passo.
+                </p>
+            `;
 
             concluirEtapa(1);
-
         }
 
 
+        // ETAPA 3
         function aprenderProgramacao() {
 
-            document.getElementById("conteudo").innerHTML =
+            document.getElementById("conteudo").innerHTML = `
 
-                "<h2>🧑‍💻 Aprendendo programação</h2>" +
+                <h2>🧑‍💻 Aprender programação</h2>
 
-                "<p>" +
-                "Programar é ensinar o computador a realizar tarefas " +
-                "através de instruções." +
-                "</p>" +
+                <p>
+                    Programação é uma das principais habilidades
+                    para quem deseja trabalhar como desenvolvedor.
+                </p>
 
-                "<h3>🌐 HTML</h3>" +
+                <h3>Você já conheceu três tecnologias importantes:</h3>
 
-                "<p>" +
-                "HTML cria a estrutura da página." +
-                "</p>" +
+                <ul>
+                    <li><strong>HTML</strong> → estrutura da página</li>
+                    <li><strong>CSS</strong> → aparência da página</li>
+                    <li><strong>JavaScript</strong> → interações e lógica</li>
+                </ul>
 
-                "<h3>🎨 CSS</h3>" +
+                <div class="quiz">
 
-                "<p>" +
-                "CSS controla a aparência da página." +
-                "</p>" +
+                    <h3>🧠 Quiz</h3>
 
-                "<h3>⚙️ JavaScript</h3>" +
+                    <p>
+                        Qual linguagem usamos para criar
+                        interações em uma página?
+                    </p>
 
-                "<p>" +
-                "JavaScript cria ações e interações na página." +
-                "</p>" +
+                    <button class="resposta"
+                        onclick="responderQuiz(false)">
+                        HTML
+                    </button>
 
-                "<div class='quiz'>" +
+                    <button class="resposta"
+                        onclick="responderQuiz(false)">
+                        CSS
+                    </button>
 
-                "<h3>🧠 QUIZ</h3>" +
+                    <button class="resposta"
+                        onclick="responderQuiz(true)">
+                        JavaScript
+                    </button>
 
-                "<p>" +
-                "<strong>Qual linguagem usamos para criar interações em uma página?</strong>" +
-                "</p>" +
+                    <p id="resultado"></p>
 
-                "<button class='resposta' onclick='responderQuiz(false)'>" +
-                "HTML" +
-                "</button>" +
-
-                "<button class='resposta' onclick='responderQuiz(false)'>" +
-                "CSS" +
-                "</button>" +
-
-                "<button class='resposta' onclick='responderQuiz(true)'>" +
-                "JavaScript" +
-                "</button>" +
-
-                "<p id='resultado'></p>" +
-
-                "</div>";
-
+                </div>
+            `;
         }
 
 
+        // Resposta do quiz
         function responderQuiz(correto) {
 
             let resultado =
                 document.getElementById("resultado");
 
-
-            if (correto === true) {
+            if (correto) {
 
                 resultado.innerHTML =
                     "🎉 PARABÉNS! Você acertou! JavaScript cria interações na página.";
@@ -366,60 +381,166 @@
 
                 resultado.innerHTML =
                     "❌ Resposta incorreta. Tente novamente!";
-
             }
-
         }
 
 
+        // ETAPA 4 - NOVA
         function criarProjetos() {
 
-            document.getElementById("conteudo").innerHTML =
+            document.getElementById("conteudo").innerHTML = `
 
-                "<h2>🛠️ Criar projetos</h2>" +
+                <h2>🛠️ Criar projetos</h2>
 
-                "<p>" +
-                "Projetos práticos ajudam você a desenvolver experiência " +
-                "e montar um portfólio." +
-                "</p>";
+                <p>
+                    Agora você vai começar a transformar
+                    seus conhecimentos em prática.
+                </p>
 
-            concluirEtapa(3);
+                <h3>🎯 Seu primeiro projeto</h3>
 
+                <p>
+                    Você já está criando um projeto:
+                    <strong>Meu Primeiro Emprego em TI</strong>.
+                </p>
+
+                <p>
+                    Esse aplicativo pode fazer parte do seu
+                    futuro portfólio.
+                </p>
+
+                <h3>O que é um portfólio?</h3>
+
+                <p>
+                    É um conjunto de projetos que mostra
+                    na prática aquilo que você sabe fazer.
+                </p>
+
+                <h3>Exemplos de projetos para o futuro:</h3>
+
+                <ul>
+                    <li>Lista de tarefas</li>
+                    <li>Calculadora</li>
+                    <li>Site pessoal</li>
+                    <li>Cadastro de clientes</li>
+                    <li>Aplicativo de controle financeiro</li>
+                </ul>
+
+                <p>
+                    💡 Quanto mais você pratica, mais projetos
+                    poderá apresentar quando procurar seu
+                    primeiro emprego.
+                </p>
+
+                <button onclick="concluirEtapa(3)">
+                    ✅ Concluir esta etapa
+                </button>
+            `;
         }
 
 
+        // ETAPA 5
         function prepararCurriculo() {
 
-            document.getElementById("conteudo").innerHTML =
+            document.getElementById("conteudo").innerHTML = `
 
-                "<h2>📄 Preparar currículo</h2>" +
+                <h2>📄 Preparar currículo</h2>
 
-                "<p>" +
-                "Seu currículo deve mostrar seus cursos, conhecimentos, " +
-                "projetos e habilidades." +
-                "</p>";
+                <p>
+                    Quando você começar a procurar seu primeiro
+                    emprego em TI, precisará apresentar suas
+                    habilidades.
+                </p>
+
+                <h3>Seu currículo poderá apresentar:</h3>
+
+                <ul>
+                    <li>Cursos realizados</li>
+                    <li>Conhecimentos em tecnologia</li>
+                    <li>Projetos desenvolvidos</li>
+                    <li>Habilidades</li>
+                    <li>Objetivo profissional</li>
+                </ul>
+
+                <p>
+                    Mesmo sem experiência profissional,
+                    seus cursos e projetos podem ajudar
+                    a mostrar o que você sabe fazer.
+                </p>
+            `;
 
             concluirEtapa(4);
-
         }
 
 
+        // ETAPA 6
         function procurarEmprego() {
 
-            document.getElementById("conteudo").innerHTML =
+            document.getElementById("conteudo").innerHTML = `
 
-                "<h2>🎯 Procurar emprego</h2>" +
+                <h2>🎯 Procurar emprego</h2>
 
-                "<p>" +
-                "Depois de aprender e criar projetos, você poderá " +
-                "começar a procurar oportunidades em TI." +
-                "</p>";
+                <p>
+                    Depois de construir seus conhecimentos,
+                    cursos e projetos, chega a hora de procurar
+                    oportunidades.
+                </p>
+
+                <h3>Você poderá procurar vagas como:</h3>
+
+                <ul>
+                    <li>Suporte técnico</li>
+                    <li>Auxiliar de TI</li>
+                    <li>Estágio em TI</li>
+                    <li>Desenvolvedor iniciante</li>
+                    <li>Programador júnior</li>
+                </ul>
+
+                <p>
+                    🎉 O objetivo é transformar tudo que você
+                    aprendeu em uma oportunidade profissional.
+                </p>
+            `;
 
             concluirEtapa(5);
-
         }
 
 
+        // Reinicia todo o progresso
+        function reiniciarProgresso() {
+
+            let confirmar =
+                confirm(
+                    "Tem certeza que deseja reiniciar sua jornada?"
+                );
+
+            if (confirmar) {
+
+                localStorage.removeItem("etapasTI");
+
+                etapas = [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ];
+
+                etapasConcluidas = 0;
+
+                document.getElementById("conteudo").innerHTML = "";
+
+                atualizarProgresso();
+
+                alert(
+                    "🔄 Jornada reiniciada! Você pode começar novamente."
+                );
+            }
+        }
+
+
+        // Atualiza o progresso ao carregar a página
         atualizarProgresso();
 
     </script>
