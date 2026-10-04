@@ -3,12 +3,15 @@
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Meu Primeiro Emprego em TI</title>
 
     <style>
+
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -24,8 +27,13 @@
             font-size: 28px;
         }
 
+        h3 {
+            margin-top: 25px;
+        }
+
         p {
             font-size: 18px;
+            line-height: 1.6;
         }
 
         button {
@@ -33,6 +41,8 @@
             margin: 8px;
             font-size: 16px;
             cursor: pointer;
+            border: none;
+            border-radius: 6px;
         }
 
         #jornada {
@@ -60,15 +70,23 @@
         }
 
         #conteudo {
-            margin-top: 30px;
+            max-width: 700px;
+            margin: 30px auto;
             padding: 20px;
+            text-align: left;
+        }
+
+        #conteudo h2 {
+            text-align: center;
         }
 
         .concluido {
             background-color: #4caf50;
             color: white;
         }
+
     </style>
+
 </head>
 
 <body>
@@ -83,6 +101,7 @@
         Começar minha jornada
     </button>
 
+
     <div id="jornada" style="display: none;">
 
         <h2>🚀 Sua jornada em TI</h2>
@@ -94,14 +113,18 @@
             </p>
 
             <div id="barra-fundo">
+
                 <div id="barra"></div>
+
             </div>
 
         </div>
 
+
         <p>
             Escolha uma etapa:
         </p>
+
 
         <button id="botao1" onclick="conhecerTI()">
             💻 Conhecer TI
@@ -129,7 +152,9 @@
 
     </div>
 
+
     <div id="conteudo"></div>
+
 
     <script>
 
@@ -144,9 +169,13 @@
             false
         ];
 
+
         function comecar() {
+
             document.getElementById("jornada").style.display = "block";
+
         }
+
 
         function concluirEtapa(numero) {
 
@@ -156,125 +185,179 @@
 
                 etapasConcluidas++;
 
+
                 document.getElementById("textoProgresso").innerHTML =
                     etapasConcluidas + " de 6 etapas concluídas";
 
-                let porcentagem = (etapasConcluidas / 6) * 100;
+
+                let porcentagem =
+                    (etapasConcluidas / 6) * 100;
+
 
                 document.getElementById("barra").style.width =
                     porcentagem + "%";
 
-                document.getElementById("botao" + (numero + 1)).classList.add("concluido");
 
-                document.getElementById("botao" + (numero + 1)).innerHTML +=
-                    " ✓ Concluído";
+                let botao =
+                    document.getElementById("botao" + (numero + 1));
+
+
+                botao.classList.add("concluido");
+
+
+                botao.innerHTML += " ✓ Concluído";
+
             }
+
 
             if (etapasConcluidas === 6) {
 
                 document.getElementById("conteudo").innerHTML +=
+
                     "<h2>🎉 Parabéns!</h2>" +
-                    "<p>Você concluiu todas as etapas da sua jornada inicial em TI!</p>";
+
+                    "<p>" +
+                    "Você concluiu todas as etapas da sua jornada inicial em TI!" +
+                    "</p>";
+
             }
+
         }
 
-       javascript
-function conhecerTI() {
 
-    document.getElementById("conteudo").innerHTML =
-
-        "<h2>💻 Conhecendo a Tecnologia da Informação</h2>" +
-
-        "<h3>O que é TI?</h3>" +
-
-        "<p>" +
-        "TI significa Tecnologia da Informação. " +
-        "É a área responsável por utilizar computadores, " +
-        "programas, sistemas e redes para criar soluções " +
-        "e resolver problemas."
-        "</p>" +
-
-        "<h3>🌐 Algumas áreas da TI</h3>" +
-
-        "<p>" +
-        "• Programação e desenvolvimento de sistemas<br>" +
-        "• Desenvolvimento de sites<br>" +
-        "• Desenvolvimento de aplicativos<br>" +
-        "• Redes de computadores<br>" +
-        "• Banco de dados<br>" +
-        "• Segurança da informação<br>" +
-        "• Suporte técnico"
-        "</p>" +
-
-        "<h3>👨‍💻 Profissões de TI</h3>" +
-
-        "<p>" +
-        "Algumas profissões que você pode seguir são: " +
-        "programador, desenvolvedor de software, analista de sistemas, " +
-        "técnico de suporte, analista de redes e profissional de segurança da informação."
-        "</p>" +
-
-        "<h3>🎯 Seu objetivo</h3>" +
-
-        "<p>" +
-        "Você está começando pelo conhecimento básico. " +
-        "Depois vamos avançar para cursos, programação, projetos, currículo e emprego."
-        "</p>";
-
-    concluirEtapa(0);
-}
+        function conhecerTI() {
 
             document.getElementById("conteudo").innerHTML =
-                "<h2>💻 Conhecendo a TI</h2>" +
-                "<p>TI significa Tecnologia da Informação.</p>" +
-                "<p>É uma área que envolve computadores, sistemas, aplicativos, sites, redes e tecnologia.</p>";
+
+                "<h2>💻 Conhecendo a Tecnologia da Informação</h2>" +
+
+                "<h3>O que é TI?</h3>" +
+
+                "<p>" +
+                "TI significa Tecnologia da Informação. " +
+                "É a área responsável por utilizar computadores, " +
+                "programas, sistemas e redes para criar soluções " +
+                "e resolver problemas." +
+                "</p>" +
+
+                "<h3>🌐 Algumas áreas da TI</h3>" +
+
+                "<p>" +
+                "• Programação e desenvolvimento de sistemas<br>" +
+                "• Desenvolvimento de sites<br>" +
+                "• Desenvolvimento de aplicativos<br>" +
+                "• Redes de computadores<br>" +
+                "• Banco de dados<br>" +
+                "• Segurança da informação<br>" +
+                "• Suporte técnico" +
+                "</p>" +
+
+                "<h3>👨‍💻 Profissões de TI</h3>" +
+
+                "<p>" +
+                "Algumas profissões que você pode seguir são: " +
+                "programador, desenvolvedor de software, " +
+                "analista de sistemas, técnico de suporte, " +
+                "analista de redes e profissional de segurança " +
+                "da informação." +
+                "</p>" +
+
+                "<h3>🎯 Seu objetivo</h3>" +
+
+                "<p>" +
+                "Você está começando pelo conhecimento básico. " +
+                "Depois vamos avançar para cursos, programação, " +
+                "projetos, currículo e emprego." +
+                "</p>";
+
 
             concluirEtapa(0);
+
         }
+
 
         function fazerCursos() {
 
             document.getElementById("conteudo").innerHTML =
+
                 "<h2>📚 Fazer cursos</h2>" +
-                "<p>Comece pelos fundamentos de informática e depois avance para programação e desenvolvimento.</p>";
+
+                "<p>" +
+                "Comece pelos fundamentos de informática e depois " +
+                "avance para programação e desenvolvimento." +
+                "</p>";
+
 
             concluirEtapa(1);
+
         }
+
 
         function aprenderProgramacao() {
 
             document.getElementById("conteudo").innerHTML =
+
                 "<h2>🧑‍💻 Aprender programação</h2>" +
-                "<p>Você vai aprender a criar programas e aplicativos usando linguagens de programação.</p>";
+
+                "<p>" +
+                "Você vai aprender a criar programas e aplicativos " +
+                "usando linguagens de programação." +
+                "</p>";
+
 
             concluirEtapa(2);
+
         }
+
 
         function criarProjetos() {
 
             document.getElementById("conteudo").innerHTML =
+
                 "<h2>🛠️ Criar projetos</h2>" +
-                "<p>Projetos práticos ajudam você a desenvolver experiência e montar um portfólio.</p>";
+
+                "<p>" +
+                "Projetos práticos ajudam você a desenvolver experiência " +
+                "e montar um portfólio." +
+                "</p>";
+
 
             concluirEtapa(3);
+
         }
+
 
         function prepararCurriculo() {
 
             document.getElementById("conteudo").innerHTML =
+
                 "<h2>📄 Preparar currículo</h2>" +
-                "<p>Seu currículo deve mostrar seus cursos, conhecimentos, projetos e habilidades.</p>";
+
+                "<p>" +
+                "Seu currículo deve mostrar seus cursos, conhecimentos, " +
+                "projetos e habilidades." +
+                "</p>";
+
 
             concluirEtapa(4);
+
         }
+
 
         function procurarEmprego() {
 
             document.getElementById("conteudo").innerHTML =
+
                 "<h2>🎯 Procurar seu primeiro emprego</h2>" +
-                "<p>Agora você poderá começar a procurar oportunidades de estágio, aprendiz e primeiro emprego em TI.</p>";
+
+                "<p>" +
+                "Agora você poderá começar a procurar oportunidades " +
+                "de estágio, aprendiz e primeiro emprego em TI." +
+                "</p>";
+
 
             concluirEtapa(5);
+
         }
 
     </script>
