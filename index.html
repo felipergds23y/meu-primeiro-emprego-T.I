@@ -39,6 +39,26 @@
             margin-top: 30px;
         }
 
+        #progresso {
+            margin: 25px auto;
+            max-width: 500px;
+        }
+
+        #barra-fundo {
+            width: 100%;
+            height: 25px;
+            background-color: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        #barra {
+            width: 0%;
+            height: 100%;
+            background-color: #4caf50;
+            transition: width 0.5s;
+        }
+
         #conteudo {
             margin-top: 30px;
             padding: 20px;
@@ -62,8 +82,20 @@
 
         <h2>🚀 Sua jornada em TI</h2>
 
+        <div id="progresso">
+
+            <p id="textoProgresso">
+                0 de 6 etapas concluídas
+            </p>
+
+            <div id="barra-fundo">
+                <div id="barra"></div>
+            </div>
+
+        </div>
+
         <p>
-            Escolha o primeiro passo:
+            Escolha o próximo passo:
         </p>
 
         <button onclick="conhecerTI()">
@@ -96,45 +128,86 @@
 
     <script>
 
+        let etapasConcluidas = 0;
+
         function comecar() {
             document.getElementById("jornada").style.display = "block";
         }
 
+        function concluirEtapa() {
+
+            if (etapasConcluidas < 6) {
+                etapasConcluidas++;
+
+                document.getElementById("textoProgresso").innerHTML =
+                    etapasConcluidas + " de 6 etapas concluídas";
+
+                let porcentagem = (etapasConcluidas / 6) * 100;
+
+                document.getElementById("barra").style.width =
+                    porcentagem + "%";
+            }
+        }
+
         function conhecerTI() {
+
             document.getElementById("conteudo").innerHTML =
                 "<h2>💻 Conhecendo a TI</h2>" +
                 "<p>TI significa Tecnologia da Informação.</p>" +
                 "<p>É uma área que envolve computadores, sistemas, aplicativos, sites, redes e tecnologia.</p>";
+
+            concluirEtapa();
         }
 
         function fazerCursos() {
+
             document.getElementById("conteudo").innerHTML =
                 "<h2>📚 Fazer cursos</h2>" +
                 "<p>Comece pelos fundamentos de informática e depois avance para programação e desenvolvimento.</p>";
+
+            concluirEtapa();
         }
 
         function aprenderProgramacao() {
+
             document.getElementById("conteudo").innerHTML =
                 "<h2>🧑‍💻 Aprender programação</h2>" +
                 "<p>Você vai aprender a criar programas e aplicativos usando linguagens de programação.</p>";
+
+            concluirEtapa();
         }
 
         function criarProjetos() {
+
             document.getElementById("conteudo").innerHTML =
                 "<h2>🛠️ Criar projetos</h2>" +
                 "<p>Projetos práticos ajudam você a desenvolver experiência e montar um portfólio.</p>";
+
+            concluirEtapa();
         }
 
         function prepararCurriculo() {
+
             document.getElementById("conteudo").innerHTML =
                 "<h2>📄 Preparar currículo</h2>" +
                 "<p>Seu currículo deve mostrar seus cursos, conhecimentos, projetos e habilidades.</p>";
+
+            concluirEtapa();
         }
 
         function procurarEmprego() {
+
             document.getElementById("conteudo").innerHTML =
                 "<h2>🎯 Procurar seu primeiro emprego</h2>" +
                 "<p>Agora você poderá começar a procurar oportunidades de estágio, aprendiz e primeiro emprego em TI.</p>";
+
+            concluirEtapa();
+
+            if (etapasConcluidas === 6) {
+                document.getElementById("conteudo").innerHTML +=
+                    "<h2>🎉 Parabéns!</h2>" +
+                    "<p>Você concluiu sua jornada inicial em TI!</p>";
+            }
         }
 
     </script>
