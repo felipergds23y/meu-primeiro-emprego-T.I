@@ -84,6 +84,25 @@
             color: white;
         }
 
+        .quiz {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .resposta {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+        }
+
+        #resultado {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
     </style>
 
 </head>
@@ -119,11 +138,9 @@
 
         </div>
 
-
         <p>
             Escolha uma etapa:
         </p>
-
 
         <button id="botao1" onclick="conhecerTI()">
             💻 Conhecer TI
@@ -227,12 +244,10 @@
 
                 etapasConcluidas++;
 
-
                 localStorage.setItem(
                     "etapasTI",
                     JSON.stringify(etapas)
                 );
-
 
                 atualizarProgresso();
 
@@ -290,7 +305,6 @@
                 "da informação." +
                 "</p>";
 
-
             concluirEtapa(0);
 
         }
@@ -307,7 +321,6 @@
                 "avance para programação e desenvolvimento." +
                 "</p>";
 
-
             concluirEtapa(1);
 
         }
@@ -317,15 +330,77 @@
 
             document.getElementById("conteudo").innerHTML =
 
-                "<h2>🧑‍💻 Aprender programação</h2>" +
+                "<h2>🧑‍💻 Aprendendo programação</h2>" +
 
                 "<p>" +
-                "Você vai aprender a criar programas e aplicativos " +
-                "usando linguagens de programação." +
-                "</p>";
+                "Programar é ensinar o computador a realizar tarefas " +
+                "através de instruções." +
+                "</p>" +
+
+                "<h3>🌐 HTML</h3>" +
+
+                "<p>" +
+                "HTML é usado para criar a estrutura de uma página." +
+                "</p>" +
+
+                "<h3>🎨 CSS</h3>" +
+
+                "<p>" +
+                "CSS é usado para deixar a página bonita e organizada." +
+                "</p>" +
+
+                "<h3>⚙️ JavaScript</h3>" +
+
+                "<p>" +
+                "JavaScript permite criar ações e interações na página." +
+                "</p>" +
+
+                "<div class='quiz'>" +
+
+                "<h3>🧠 Mini quiz</h3>" +
+
+                "<p>" +
+                "Qual linguagem usamos para criar interações em uma página?" +
+                "</p>" +
+
+                "<button class='resposta' onclick='responderQuiz(false)'>" +
+                "HTML" +
+                "</button>" +
+
+                "<button class='resposta' onclick='responderQuiz(false)'>" +
+                "CSS" +
+                "</button>" +
+
+                "<button class='resposta' onclick='responderQuiz(true)'>" +
+                "JavaScript" +
+                "</button>" +
+
+                "<p id='resultado'></p>" +
+
+                "</div>";
+
+        }
 
 
-            concluirEtapa(2);
+        function responderQuiz(correto) {
+
+            let resultado =
+                document.getElementById("resultado");
+
+
+            if (correto) {
+
+                resultado.innerHTML =
+                    "🎉 Muito bem! JavaScript cria interações na página.";
+
+                concluirEtapa(2);
+
+            } else {
+
+                resultado.innerHTML =
+                    "❌ Ainda não. Tente novamente!";
+
+            }
 
         }
 
@@ -341,7 +416,6 @@
                 "e montar um portfólio." +
                 "</p>";
 
-
             concluirEtapa(3);
 
         }
@@ -356,18 +430,7 @@
                 "<p>" +
                 "Seu currículo deve mostrar seus cursos, conhecimentos, " +
                 "projetos e habilidades." +
-                "</p>" +
-
-                "<h3>📌 O que colocar no currículo?</h3>" +
-
-                "<p>" +
-                "• Cursos realizados<br>" +
-                "• Conhecimentos em informática<br>" +
-                "• Conhecimentos em programação<br>" +
-                "• Projetos realizados<br>" +
-                "• Habilidades profissionais" +
                 "</p>";
-
 
             concluirEtapa(4);
 
@@ -384,19 +447,7 @@
                 "Depois de aprender os fundamentos e criar alguns " +
                 "projetos, você poderá começar a procurar oportunidades " +
                 "na área de Tecnologia da Informação." +
-                "</p>" +
-
-                "<h3>💼 Onde procurar?</h3>" +
-
-                "<p>" +
-                "• Sites de emprego<br>" +
-                "• LinkedIn<br>" +
-                "• Empresas de tecnologia<br>" +
-                "• Estágios<br>" +
-                "• Programas de primeiro emprego<br>" +
-                "• Trabalhos como freelancer" +
                 "</p>";
-
 
             concluirEtapa(5);
 
