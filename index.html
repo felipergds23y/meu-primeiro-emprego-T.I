@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -63,6 +63,11 @@
             margin-top: 30px;
             padding: 20px;
         }
+
+        .concluido {
+            background-color: #4caf50;
+            color: white;
+        }
     </style>
 </head>
 
@@ -95,30 +100,30 @@
         </div>
 
         <p>
-            Escolha o próximo passo:
+            Escolha uma etapa:
         </p>
 
-        <button onclick="conhecerTI()">
+        <button id="botao1" onclick="conhecerTI()">
             💻 Conhecer TI
         </button>
 
-        <button onclick="fazerCursos()">
+        <button id="botao2" onclick="fazerCursos()">
             📚 Fazer cursos
         </button>
 
-        <button onclick="aprenderProgramacao()">
+        <button id="botao3" onclick="aprenderProgramacao()">
             🧑‍💻 Aprender programação
         </button>
 
-        <button onclick="criarProjetos()">
+        <button id="botao4" onclick="criarProjetos()">
             🛠️ Criar projetos
         </button>
 
-        <button onclick="prepararCurriculo()">
+        <button id="botao5" onclick="prepararCurriculo()">
             📄 Preparar currículo
         </button>
 
-        <button onclick="procurarEmprego()">
+        <button id="botao6" onclick="procurarEmprego()">
             🎯 Procurar emprego
         </button>
 
@@ -130,13 +135,25 @@
 
         let etapasConcluidas = 0;
 
+        let etapas = [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ];
+
         function comecar() {
             document.getElementById("jornada").style.display = "block";
         }
 
-        function concluirEtapa() {
+        function concluirEtapa(numero) {
 
-            if (etapasConcluidas < 6) {
+            if (etapas[numero] === false) {
+
+                etapas[numero] = true;
+
                 etapasConcluidas++;
 
                 document.getElementById("textoProgresso").innerHTML =
@@ -146,6 +163,18 @@
 
                 document.getElementById("barra").style.width =
                     porcentagem + "%";
+
+                document.getElementById("botao" + (numero + 1)).classList.add("concluido");
+
+                document.getElementById("botao" + (numero + 1)).innerHTML +=
+                    " ✓ Concluído";
+            }
+
+            if (etapasConcluidas === 6) {
+
+                document.getElementById("conteudo").innerHTML +=
+                    "<h2>🎉 Parabéns!</h2>" +
+                    "<p>Você concluiu todas as etapas da sua jornada inicial em TI!</p>";
             }
         }
 
@@ -156,7 +185,7 @@
                 "<p>TI significa Tecnologia da Informação.</p>" +
                 "<p>É uma área que envolve computadores, sistemas, aplicativos, sites, redes e tecnologia.</p>";
 
-            concluirEtapa();
+            concluirEtapa(0);
         }
 
         function fazerCursos() {
@@ -165,7 +194,7 @@
                 "<h2>📚 Fazer cursos</h2>" +
                 "<p>Comece pelos fundamentos de informática e depois avance para programação e desenvolvimento.</p>";
 
-            concluirEtapa();
+            concluirEtapa(1);
         }
 
         function aprenderProgramacao() {
@@ -174,7 +203,7 @@
                 "<h2>🧑‍💻 Aprender programação</h2>" +
                 "<p>Você vai aprender a criar programas e aplicativos usando linguagens de programação.</p>";
 
-            concluirEtapa();
+            concluirEtapa(2);
         }
 
         function criarProjetos() {
@@ -183,7 +212,7 @@
                 "<h2>🛠️ Criar projetos</h2>" +
                 "<p>Projetos práticos ajudam você a desenvolver experiência e montar um portfólio.</p>";
 
-            concluirEtapa();
+            concluirEtapa(3);
         }
 
         function prepararCurriculo() {
@@ -192,7 +221,7 @@
                 "<h2>📄 Preparar currículo</h2>" +
                 "<p>Seu currículo deve mostrar seus cursos, conhecimentos, projetos e habilidades.</p>";
 
-            concluirEtapa();
+            concluirEtapa(4);
         }
 
         function procurarEmprego() {
@@ -201,13 +230,7 @@
                 "<h2>🎯 Procurar seu primeiro emprego</h2>" +
                 "<p>Agora você poderá começar a procurar oportunidades de estágio, aprendiz e primeiro emprego em TI.</p>";
 
-            concluirEtapa();
-
-            if (etapasConcluidas === 6) {
-                document.getElementById("conteudo").innerHTML +=
-                    "<h2>🎉 Parabéns!</h2>" +
-                    "<p>Você concluiu sua jornada inicial em TI!</p>";
-            }
+            concluirEtapa(5);
         }
 
     </script>
@@ -215,4 +238,4 @@
 </body>
 
 </html>
-
+```
